@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of User-Defined Array Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sum of User-Defined Array Elements</h1>
+        <label for="numbersInput">Enter numbers (comma-separated):</label>
+        <input type="text" id="numbersInput">
+        <button onclick="calculateSum()">Calculate Sum</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function sumArray(arr) {
+            return arr.reduce((acc, curr) => acc + curr, 0);
+        }
+
+        function calculateSum() {
+            const numbersInput = document.getElementById('numbersInput').value;
+            const numbersArray = numbersInput.split(',').map(Number);
+            const sum = sumArray(numbersArray);
+            document.getElementById('result').innerText = `The sum of all elements in the array is: ${sum}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .calculator {
+            width: 320px;
+            margin: 100px auto;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .calculator-header {
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+        .calculator-body {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+        .button {
+            padding: 15px;
+            font-size: 18px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #f7f7f7;
+        }
+        .operator {
+            background-color: #ffa500;
+            color: #ffffff;
+        }
+        .equals {
+            background-color: #4caf50;
+            color: #ffffff;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px 15px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-header" id="header">0</div>
+        <div class="calculator-body">
+            <div class="button" onclick="appendToHeader('7')">7</div>
+            <div class="button" onclick="appendToHeader('8')">8</div>
+            <div class="button" onclick="appendToHeader('9')">9</div>
+            <div class="button operator" onclick="appendToHeader('+')">+</div>
+            <div class="button" onclick="appendToHeader('4')">4</div>
+            <div class="button" onclick="appendToHeader('5')">5</div>
+            <div class="button" onclick="appendToHeader('6')">6</div>
+            <div class="button operator" onclick="appendToHeader('-')">-</div>
+            <div class="button" onclick="appendToHeader('1')">1</div>
+            <div class="button" onclick="appendToHeader('2')">2</div>
+            <div class="button" onclick="appendToHeader('3')">3</div>
+            <div class="button operator" onclick="appendToHeader('*')">*</div>
+            <div class="button" onclick="appendToHeader('0')">0</div>
+            <div class="button" onclick="clearHeader()">C</div>
+            <div class="button operator" onclick="calculate()">=</div>
+            <div class="button operator" onclick="appendToHeader('/')">/</div>
+        </div>
+        <div id="result">0</div>
+    </div>
+
+    <script>
+        function appendToHeader(value) {
+            var header = document.getElementById('header');
+            if (header.innerHTML === '0') {
+                header.innerHTML = '';
+            }
+            header.innerHTML += value;
+        }
+
+        function clearHeader() {
+            var header = document.getElementById('header');
+            header.innerHTML = '0';
+        }
+
+        function calculate() {
+            var header = document.getElementById('header');
+            var result = eval(header.innerHTML);
+            document.getElementById('result').innerHTML = result;
+            header.innerHTML = '0';
+        }
+    </script>
+</body>
+</html>
